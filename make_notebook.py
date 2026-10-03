@@ -295,3 +295,12 @@ It's not just that one-number answer is impossible; there are multiple reasons t
 The evidence from the analysis supports my points. Sweeping the threshold in Part 2.4 shows that moving from t=0.55 to t=0.35 would improve Demographic Parity from 0.51 to 0.79, but it does so by massively altering the false positive rates for Caucasians. Part 2.2 shows that dropping the priors variable causes the race coefficient to shift by 3893%. Finally, Part 2.3 shows that the model is confidently wrong on 87 specific defendants.
 
 In conclusion, deploying this model requires transparency about trade-offs and not a single metric or threshold. A predictive model in the justice system should only be a tool for domain experts who can evaluate the hidden confounds and contextual interactions that the algorithm doesn't know about.""")
+
+notebook = {
+    "cells": cells,
+    "metadata": {},
+    "nbformat": 4,
+    "nbformat_minor": 5
+}
+with open("Assignment1_470.ipynb", "w") as f:
+    json.dump(notebook, f, indent=1)
