@@ -283,36 +283,17 @@ Looking at our data, if a policymaker artificially attempts to force near-perfec
 I am comfortable sacrificing strict Demographic Parity because DP fundamentally ignores the underlying base rates of actual recidivism, which may unfortunately differ between groups due to systemic issues such as over-policing. Forcing a mathematical model to flag an identical percentage of individuals across groups (DP) when actual recidivism rates differ inherently requires accepting much higher unjust error rates for one specific demographic. Prioritizing Equalized Odds is a significantly more acceptable sacrifice because it mathematically guarantees that the algorithm’s mistakes (unjust punishment of the innocent or dangerous letting of the guilty go) are distributed equitably, adhering to the true legal standard of fairness.""")
 
 # --- Part 4 ---
-add_md("""## Part 4 — Reflection
+add_md("""## Part 4 — Reflection Essay
 
-If a policymaker asked me for a one-number answer on whether we should deploy this model, I would say: I recommend conditional deployment under strict human supervision, rather than full autonomous deployment, because the model contains embedded biases that cannot be mathematically resolved by a single threshold.
+If a policymaker asked me for a single, definitive answer on whether we should deploy this algorithmic risk model, my response would be highly cautious: I recommend conditional deployment only under strict, continuous human supervision, rather than fully autonomous deployment. The core reasoning behind this recommendation is that the model contains deeply embedded, systemic biases that simply cannot be mathematically resolved by adjusting a single decision threshold. 
 
-A single-number answer fails for several critical reasons. First, fairness metrics inherently conflict with one another. As shown in the trade-off chart, it is mathematically impossible to satisfy all fairness criteria simultaneously when base rates differ across groups. Improving Demographic Parity comes at the direct expense of Equalized Odds or Predictive Parity. You cannot tune a single threshold to make the model "fair" for everyone; choosing a threshold is fundamentally a values question, not a data-driven fact. 
+Relying on a single-number metric to determine the model's validity fails for several critical reasons. First, fairness metrics inherently conflict with one another. As clearly demonstrated in the fairness trade-off chart, it is mathematically impossible to satisfy all fairness criteria simultaneously when the underlying base rates of recidivism differ across demographic groups. Artificially improving Demographic Parity comes at the direct and unavoidable expense of Equalized Odds or Predictive Parity. You cannot simply tune a threshold to make the model objectively "fair" for everyone. Choosing a threshold is fundamentally a moral values question regarding which demographic groups should bear the burden of algorithmic errors, not a purely data-driven fact.
 
-Second, the model is highly vulnerable to hidden confounds that remain unknowable without external context. My omitted-variable test demonstrated that dropping a single variable (`priors_count`) caused the coefficient for race to shift by over 3800%. The model simply reallocated the risk of the missing variable onto a demographic proxy. If the model is deployed as a single objective source of truth, it will confidently launder these missing societal variables into racial or gender penalties without anyone realizing it.
+Second, the model is highly vulnerable to hidden confounds that remain completely unknowable without external context. My omitted-variable bias test demonstrated that dropping a single critical variable (`priors_count`) caused the regression coefficient for race to shift drastically by an incredible -94,313%. The model simply reallocated the predictive risk of the missing behavioral variable onto a proxy demographic trait. If the model is deployed autonomously as a single objective source of truth, it will confidently launder these missing societal variables into unfair racial penalties without anyone realizing it.
 
-Finally, the model confidently fails on predictable subsets of the population. By treating all risk factors as linear and independent, it misses crucial human nuances. For example, my adversarial analysis found 87 cases (nearly 5% of the test set) where the model was highly confident but completely wrong. These were mostly older individuals with many prior offenses. The model simply added the "low risk" of old age to the "high risk" of many priors and produced confident errors, entirely missing the real-world interaction that older habitual offenders often naturally age out of crime. Overall accuracy completely hides these localized performance gaps.
+Finally, the model confidently fails on predictable subsets of the population. By treating all risk factors as strictly linear and independent, the algorithm misses crucial human nuances. For example, my adversarial analysis identified 81 specific cases (4.37% of the test set) where the model was highly confident but completely wrong. These were mostly older individuals with a significantly higher number of prior offenses. The model naively added the "low risk" mathematical weight of old age directly to the "high risk" mathematical weight of many priors and produced confident errors. It entirely missed the real-world interaction that older habitual offenders often naturally age out of crime. 
 
-The evidence from the analysis strongly supports these limitations. Sweeping the threshold in Part 2.4 showed that moving from t=0.55 to t=0.35 improves Demographic Parity from 0.51 to 0.79, but it does so by drastically altering the false positive rates for Caucasians. In Part 2.2, dropping the priors variable caused the race coefficient to shift by 3893%. In Part 2.3, the model was confidently wrong on 87 specific defendants.
+The hard evidence from the analysis strongly supports these severe limitations. Sweeping the threshold in Part 2.4 showed that attempting to maximize one metric drastically alters the false positive rates for specific racial groups, forcing unfair compromises. In Part 2.2, dropping the priors variable caused the race coefficient to shift astronomically by -94,313%. In Part 2.3, the model was confidently wrong on 81 defendants, and in Part 2.1, the Simpson's Paradox hunt proved that aging protects men and women at different rates.
 
-Ultimately, responsible AI deployment requires transparency about trade-offs, not a single metric or threshold. A predictive model in the justice system should only be a tool to assist domain experts, who can evaluate the hidden confounds and contextual interactions that the algorithm is mathematically blind to.""")
-
-notebook = {
-    "cells": cells,
-    "metadata": {
-        "kernelspec": {
-            "display_name": "Python 3",
-            "language": "python",
-            "name": "python3"
-        },
-        "language_info": {
-            "name": "python",
-            "version": "3.14"
-        }
-    },
-    "nbformat": 4,
-    "nbformat_minor": 4
-}
-
-with open('Assignment1_470.ipynb', 'w') as f:
-    json.dump(notebook, f, indent=1)
+Ultimately, responsible AI deployment in the criminal justice system requires transparency about trade-offs, not a single metric or threshold. A predictive model should only ever be used as an assistive tool for domain experts, who can intelligently evaluate the hidden confounds, human contexts, and non-linear interactions that the algorithm remains mathematically blind to.
+""")
