@@ -20,8 +20,11 @@ def add_code(text):
 
 # --- Title ---
 add_md("""# CSET485 – AI and Society: Assignment #1
-**Roll Number Ends In:** 470
-**Dataset:** COMPAS Recidivism Risk Score""")
+**Name:** Shivam Mishra
+**Roll Number:** S24CSEU1470
+**Batch:** 56
+**Dataset:** COMPAS Recidivism Risk Score
+**Seed:** 470""")
 
 # --- Preprocessing ---
 add_md("""## Data Preprocessing
